@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
+#import "RegistViewController.h"
+#import <AVOSCloud/AVOSCloud.h>
 
 @interface AppDelegate ()
 
@@ -16,7 +19,29 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  // Override point for customization after application launch.
+
+  self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+  LoginViewController *vcLogin = [[LoginViewController alloc] init];
+  UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vcLogin];
+  self.window.rootViewController = nav;
+  [self.window makeKeyAndVisible];
+  
+  // applicationId 即 App Id，clientKey 是 App Key。
+  [AVOSCloud setApplicationId:@"4smIPTdq4WVlNQzJXyS2vVbr-gzGzoHsz"
+                    clientKey:@"M28cEuSCEMp3Ay08259r5PWF"];
+  [AVAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+  
+  //LeanCloud 测试
+  /*
+  AVObject *post = [AVObject objectWithClassName:@"TestObject"];
+  [post setObject:@"Hello World!" forKey:@"words"];
+  [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    if (succeeded) {
+      // 保存成功了！
+    }
+  }];
+   */
+
   return YES;
 }
 

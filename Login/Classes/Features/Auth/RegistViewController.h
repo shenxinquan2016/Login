@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  RegistViewController.h
 //  Login
 //
 //  Created by 沈昕权 on 16/7/6.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface RegistViewController : UIViewController
 
 @end
-
